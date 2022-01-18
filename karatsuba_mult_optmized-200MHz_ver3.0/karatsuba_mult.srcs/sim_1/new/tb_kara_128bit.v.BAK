@@ -1,0 +1,79 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2020/08/05 17:26:38
+// Design Name: 
+// Module Name: tb_kara_128bit
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module tb_kara_128bit(
+
+    );
+
+
+
+reg     sys_clk;
+reg     sys_rst;
+
+reg     [127:0]      mult_in_a;
+reg     [127:0]      mult_in_b;
+wire    [255:0]      mult_out;
+
+
+always #5 sys_clk = ~sys_clk;
+
+
+initial begin
+    sys_clk = 1'b0;
+    sys_rst = 1'b0;
+
+
+    sys_rst = 1'b1;
+
+    #200
+    sys_rst = 1'b0;
+
+    #20
+    mult_in_a = 128'd240212365984212135265213155656;
+    mult_in_b = 128'd32244578412138712123659875631;
+
+    #10
+    mult_in_a = 128'd1402123659842121352652131;
+    mult_in_b = 128'd22126598987613236541212;
+
+    #10
+    mult_in_a = 128'd12323423235659878451213216543;
+    mult_in_b = 128'd321315565654236845563145724;
+    #10
+    mult_in_a = 128'd1000;
+    mult_in_b = 128'd2000;
+
+end
+
+
+karatsuba_top uut_kara_mult_128bit (
+
+    .clk        (sys_clk    ),
+    .rst        (sys_rst    ),
+    .mult_in_a  (mult_in_a  ),
+    .mult_in_b  (mult_in_b  ),
+    .mult_out   (mult_out   )
+
+
+    );
+
+endmodule
