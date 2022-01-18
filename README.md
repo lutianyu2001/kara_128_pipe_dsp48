@@ -6,7 +6,7 @@ Language: Verilog
 
 Platform: Xilinx
 
-The time sequence shown as below:
+The time sequence is shown as below:
 
 ![time sequence](https://raw.githubusercontent.com/lutianyu2001/kara_128_pipe_dsp48/main/Time%20Sequence_karatsuba.png)
 
